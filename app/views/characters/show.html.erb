@@ -1,0 +1,103 @@
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h1>
+      Character #<%= @character.id %> details
+    </h1>
+
+    <div class="row mb-3">
+      <div class="col">
+        <a href="/characters" class="btn btn-block btn-outline-secondary">
+          Go back
+        </a>
+      </div>
+
+      <div class="col">
+
+      </div>
+
+      <div class="col">
+        <a href="/delete_character/<%= @character.id %>" class="btn btn-block btn-outline-secondary">
+          Delete character
+        </a>
+      </div>
+    </div>
+    <div>
+
+    <h1>
+      Edit character #<%= @character.id %>
+    </h1>
+
+    <hr>
+
+    <form action="/modify_character/<%= @character.id %>" method="post">
+      
+      <div class="form-group">
+        <label for="movie_id">
+          Movie
+        </label>
+      
+        <input type="text" id="movie_id" name="qs_movie_id" class="form-control" value="<%= @character.movie_id %>">
+      </div>
+            
+      <div class="form-group">
+        <label for="actor_id">
+          Actor
+        </label>
+      
+        <input type="text" id="actor_id" name="qs_actor_id" class="form-control" value="<%= @character.actor_id %>">
+      </div>
+            
+      <div class="form-group">
+        <label for="name">
+          Name
+        </label>
+      
+        <input type="text" id="name" name="qs_name" class="form-control" value="<%= @character.name %>">
+      </div>
+            
+              <button class="btn btn-block btn-outline-secondary">
+          Update character
+        </button>
+      </form>
+
+      <hr>
+    </div>
+    <dl>
+      <dt>
+        Movie
+      </dt>
+      <dd>
+        <%= @character.movie_id %>
+      </dd>
+
+      <dt>
+        Actor
+      </dt>
+      <dd>
+        <%= @character.actor_id %>
+      </dd>
+
+      <dt>
+        Name
+      </dt>
+      <dd>
+        <%= @character.name %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@character.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@character.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+

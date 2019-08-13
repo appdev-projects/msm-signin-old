@@ -1,0 +1,173 @@
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h1>
+      Director #<%= @director.id %> details
+    </h1>
+
+    <div class="row mb-3">
+      <div class="col">
+        <a href="/directors" class="btn btn-block btn-outline-secondary">
+          Go back
+        </a>
+      </div>
+
+      <div class="col">
+
+      </div>
+
+      <div class="col">
+        <a href="/delete_director/<%= @director.id %>" class="btn btn-block btn-outline-secondary">
+          Delete director
+        </a>
+      </div>
+    </div>
+    <div>
+      <h1>
+        Edit director #<%= @director.id %>
+      </h1>
+
+      <hr>
+
+      <form action="/modify_director/<%= @director.id %>" method="post">
+
+        <div class="form-group">
+          <label for="name">
+            Name
+          </label>
+          <input type="text" id="name" name="qs_name" class="form-control" value="<%= @director.name %>">
+        </div>
+      
+          <div class="form-group">
+          <label for="dob">
+            Dob
+          </label>
+          <input type="text" id="dob" name="qs_dob" class="form-control" value="<%= @director.dob %>">
+
+        </div>
+      
+          <div class="form-group">
+            <label for="bio">
+              Bio
+            </label>
+            <textarea id="bio" name="qs_bio" class="form-control" rows="3"><%= @director.bio %></textarea>
+        </div>
+      
+        <div class="form-group">
+          <label for="image_url">
+            Image
+          </label>
+
+          <input type="text" id="image_url" name="qs_image_url" class="form-control" value="<%= @director.image_url %>">
+        </div>
+      
+        <button class="btn btn-block btn-outline-secondary">
+           Update director
+        </button>
+      </form>
+
+      <hr>
+    </div>
+    <table border="1" class="table">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Name
+        </th>
+
+        <th>
+          Dob
+        </th>
+
+        <th>
+          Bio
+        </th>
+
+        <th>
+          Image
+        </th>
+
+      </tr>
+
+      <tr>
+        <td>
+          <%= @director.id %>
+        </td>
+
+        <td>
+          <%= @director.name %>
+        </td>
+
+        <td>
+          <%= @director.dob %>
+        </td>
+
+        <td>
+          <%= @director.bio %>
+        </td>
+
+        <td>
+          <img src="<%= @director.image_url %>">
+        </td>
+
+      </tr>
+    </table>
+  </div>
+</div>
+  <h3>Filmography</h3>
+  <table border="1">
+  <tr>
+    <th>
+      Title
+    </th>
+
+    <th>
+      Year
+    </th>
+    
+    <th>
+      Duration
+    </th>
+
+    <th>
+      Description
+    </th>
+
+
+    <th>
+      Image Url
+    </th>
+
+    <th>
+      Director
+    </th>
+
+  </tr>
+  <% @director.filmography.each do |movie| %>
+  <tr>
+    <td>
+      <%= movie.title %>
+    </td>
+
+    <td>
+      <%= movie.year %>
+    </td>
+
+    <td>
+      <%= movie.duration %>
+    </td>
+    <td>
+      <%= movie.description %>
+    </td>
+    <td>
+      <img src="<%= movie.image_url %>">
+    </td>
+    <td>
+      <%= movie.director.name %>
+    </td>
+  </tr>
+  <% end %>
+</table>
+

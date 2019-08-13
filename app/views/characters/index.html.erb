@@ -1,0 +1,115 @@
+<div class="row mb-3">
+  <div class="col-md-12">
+    <h1>
+      List of all characters
+    </h1>
+
+    <h2>
+      Add a new character
+    </h2>
+
+    <hr>
+
+    <form action="/insert_character" method="post">
+  
+      <div class="form-group">
+      <label for="movie_id">
+        Movie
+      </label>
+        <input type="text" id="movie_id" name="qs_movie_id" class="form-control">
+      </div>
+
+      <div class="form-group">
+      <label for="actor_id">
+        Actor
+      </label>
+        <input type="text" id="actor_id" name="qs_actor_id" class="form-control">
+      </div>
+
+      <div class="form-group">
+      <label for="name">
+        Name
+      </label>
+        <input type="text" id="name" name="qs_name" class="form-control">
+      </div>
+
+    
+      <button class="btn btn-block btn-outline-secondary">
+        Create character
+      </button>
+    </form>
+
+    <hr>
+  </div>
+</div>
+
+
+<hr>
+
+<div class="row mb-3">
+  <div class="col-md-12">
+    <table class="table">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Movie
+        </th>
+
+        <th>
+          Actor
+        </th>
+
+        <th>
+          Name
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @characters.each do |character| %>
+      <tr>
+        <td>
+          <%= character.id %>
+        </td>
+
+        <td>
+          <%= character.movie_id %>
+        </td>
+
+        <td>
+          <%= character.actor_id %>
+        </td>
+
+        <td>
+          <%= character.name %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(character.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(character.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/characters/<%= character.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

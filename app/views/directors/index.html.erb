@@ -1,0 +1,121 @@
+<div class="row mb-3">
+  <div class="col-md-12">
+    <h1>
+      List of all directors
+    </h1>
+
+    <a href="/movies">All Movies</a>
+    <a href="/directors">All Directors</a>
+    <a href="/actors">All Actors</a>
+
+    <h2>
+      Add a new director
+    </h2>
+
+    <hr>
+
+    <form action="/insert_director" method="post">
+  
+      <div class="form-group">
+        <label for="name">
+          Name
+        </label>
+        <input type="text" id="name" name="qs_name" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="dob">
+          Dob
+        </label>
+        <input type="text" id="dob" name="qs_dob" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="bio">
+          Bio
+        </label>
+
+        <textarea id="bio" name="qs_bio" class="form-control" rows="3"></textarea>
+
+      </div>
+
+      <div class="form-group">
+        <label for="image_url">
+          Image
+        </label>
+        <input type="text" id="image_url" name="qs_image_url" class="form-control">
+      </div>
+
+    
+      <button class="btn btn-block btn-outline-secondary">
+        Create director
+      </button>
+    </form>
+
+    <hr>
+  </div>
+</div>
+
+
+<hr>
+
+<div class="row mb-3">
+  <div class="col-md-12">
+    <table border="1" class="table">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Name
+        </th>
+
+        <th>
+          Dob
+        </th>
+
+        <th>
+          Bio
+        </th>
+
+        <th>
+          Image
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @directors.each do |director| %>
+      <tr>
+        <td>
+          <%= director.id %>
+        </td>
+
+        <td>
+          <%= director.name %>
+        </td>
+
+        <td>
+          <%= director.dob %>
+        </td>
+
+        <td>
+          <%= director.bio %>
+        </td>
+
+        <td>
+          <img src="<%= director.image_url %>">
+        </td>
+
+        <td>
+          <a href="/directors/<%= director.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

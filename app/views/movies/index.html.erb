@@ -1,0 +1,153 @@
+<div class="row mb-3">
+  <div class="col-md-12">
+    <h1>
+      List of all movies
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div class="row mb-3">
+  <div class="col-md-12">
+    <h2>
+      Add a new movie
+    </h2>
+
+    <hr>
+
+    <form action="/insert_movie" method="post">
+      <div class="form-group">
+        <label for="title">
+          Title
+        </label>
+        <input type="text" id="title" name="qs_title" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="year">
+          Year
+        </label>
+
+        <input type="text" id="year" name="qs_year" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="duration">
+          Duration
+        </label>
+
+        <input type="text" id="duration" name="qs_duration" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="description">
+          Description
+        </label>
+
+        <textarea id="description" name="qs_description" class="form-control" rows="3"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="image_url">
+          Image Url
+        </label>
+
+        <input type="text" id="image_url" name="qs_image_url" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="director_id">
+          Director ID
+        </label>
+
+        <input type="text" id="director_id" name="qs_director_id" class="form-control">
+      </div>
+
+      <button class="btn btn-block btn-outline-secondary">
+        Create movie
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+
+<div class="row mb-3">
+  <div class="col-md-12">
+    <table border="1" class="table">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Title
+        </th>
+
+        <th>
+          Year
+        </th>
+
+        <th>
+          Duration
+        </th>
+
+        <th>
+          Description
+        </th>
+
+        <th>
+          Image Url
+        </th>
+
+        <th>
+          Director
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @movies.each do |movie| %>
+      <tr>
+        <td>
+          <%= movie.id %>
+        </td>
+
+        <td>
+          <%= movie.title %>
+        </td>
+
+        <td>
+          <%= movie.year %>
+        </td>
+
+        <td>
+          <%= movie.duration %>
+        </td>
+
+        <td>
+          <%= movie.description %>
+        </td>
+
+        <td>
+          <img src="<%= movie.image_url %>">
+        </td>
+
+        <td>
+          <a href="/directors/<%= movie.director_id %>">
+            <%= movie.director.name %>
+          </a>
+        </td>
+
+        <td>
+          <a href="/movies/<%= movie.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
